@@ -1,6 +1,7 @@
 //% color=190 weight=100 icon="\uf028" block="micro:bit Talker"
 namespace Talker{
-    function speak(msg: string) {
+    //% block "話す %msg"
+    export function speak(msg: string) {
         dummy = serial.readString()
         // ★CRで実行される。LFは送らない
         serial.writeString("" + msg + CR)
@@ -46,7 +47,8 @@ namespace Talker{
         pins.digitalWritePin(ATP_RESET, 1)
         basic.pause(120)
     }
-    function init() {
+    //% block"初期化"
+    export function init() {
         // ──1kΩ── J4-1 (/RESET)
         ATP_RESET = DigitalPin.P12
         // ★ブロック変換でも壊れないCR
