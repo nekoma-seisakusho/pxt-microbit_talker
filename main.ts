@@ -1,3 +1,4 @@
+//% color=190 weight=100 icon="\uf028" block="micro:bit Talker"
 namespace Talker{
     // 喋らせて、発声完了の '>' を待つ。
     //% block="speak"
