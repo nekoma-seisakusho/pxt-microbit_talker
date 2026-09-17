@@ -1,7 +1,6 @@
-//% color=190 weight=100 icon="\uf028" block="Basic Blocks"
 namespace Talker{
     // 喋らせて、発声完了の '>' を待つ。
-    //% block="init"
+    //% block="speak"
     export function speak(msg: string, timeoutMs: number) {
         dummy = serial.readString()
         // ★CRで実行される。LFは送らない
