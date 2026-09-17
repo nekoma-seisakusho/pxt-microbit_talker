@@ -1,12 +1,11 @@
+//% color=190 weight=100 icon="\uf028" block="micro:bit Talker"
 namespace Talker{
-    // 喋らせて、発声完了の '>' を待つ。
-    //% block="メッセージ %msg タイムアウト %timeoutMs"
-    export function speak(msg: string, timeoutMs: number) {
+    function speak(msg: string) {
         dummy = serial.readString()
         // ★CRで実行される。LFは送らない
         serial.writeString("" + msg + CR)
         start2 = input.runningTime()
-        while (input.runningTime() - start2 < timeoutMs) {
+        while (input.runningTime() - start2 < 15000) {
             buf2 = "" + buf2 + serial.readString()
             if (buf2.indexOf(">") >= 0) {
                 return
@@ -30,12 +29,14 @@ namespace Talker{
         }
         return false
     }
+    /*
     input.onButtonPressed(Button.A, function () {
         // 挨拶中はスマイル
         basic.showIcon(IconNames.Happy)
-        speak("konn'nichiwa,watashiwa maikurobi'tto,de'su.", 15000)
+        speak("tesuto tesuto")
         basic.showIcon(IconNames.Heart)
     })
+    */
     // ===== ATP3011 ヘルパー =====
     function atpReset() {
         pins.digitalWritePin(ATP_RESET, 1)
@@ -45,8 +46,7 @@ namespace Talker{
         pins.digitalWritePin(ATP_RESET, 1)
         basic.pause(120)
     }
-    //% block="init"
-    export function init() {
+    function init() {
         // ──1kΩ── J4-1 (/RESET)
         ATP_RESET = DigitalPin.P12
         // ★ブロック変換でも壊れないCR
