@@ -1,4 +1,3 @@
-//% color=190 weight=100 icon="\uf028" block="micro:bit Talker"
 namespace Talker{
     // 喋らせて、発声完了の '>' を待つ。
     //% block="メッセージ %msg タイムアウト %timeoutMs"
@@ -78,6 +77,7 @@ namespace Talker{
     let start2 = 0
     let CR = ""
     let dummy = ""
+    /*
     basic.showLeds(`
     . . . . .
     . . . . .
@@ -87,6 +87,6 @@ namespace Talker{
     `)
     init()
     basic.showIcon(IconNames.Heart)
-
+*/
 //ここまでnamespace
 }
